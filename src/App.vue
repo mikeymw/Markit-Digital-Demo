@@ -1,8 +1,18 @@
 <template>
     <div id="app">
-        <router-view/>
+        <quote-wrapper></quote-wrapper>
     </div>
 </template>
+
+<script>
+import QuoteWrapper from "@/views/QuoteWrapper";
+
+export default {
+    components: {
+        QuoteWrapper,
+    }
+}
+</script>
 
 <style lang="scss">
 $theme-colors: (

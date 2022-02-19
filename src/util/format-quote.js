@@ -48,13 +48,15 @@ const buildQuote = (rawQuote) => {
         quote[prop] = formatQuote(prop, rawQuote[prop]);
     }
     
-    const { Low, High } = quote;
+    const { Low, High, Open, Volume, MarketCap } = quote;
+    const quoteDetails = [];
     
-    if (Low !== "N/A" && High !== "N/A") {
-        quote.Range = `${Low} - ${High}`;
-    } else {
-        quote.Range = "N/A";
-    }
+    quoteDetails.push({ key: "Range", value: Low !== "N/A" && High !== "N/A" ? `${Low} - ${High}` : "N/A" });
+    quoteDetails.push({ key: "Open", value: Open });
+    quoteDetails.push({ key: "Volume", value: Volume });
+    quoteDetails.push({ key: "Market Cap", value: MarketCap });
+    
+    quote.quoteDetails = quoteDetails;
     
     return quote;
 }
